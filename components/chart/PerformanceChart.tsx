@@ -1,5 +1,6 @@
-"use client";
+'use client'
 
+import { TimelinePoint } from '@/lib/types'
 import {
   LineChart,
   Line,
@@ -7,46 +8,60 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
-import { TimelinePoint } from "@/lib/types";
+} from 'recharts'
 
-export default function PerformanceChart({
-  data,
-}: {
-  data: TimelinePoint[];
-}) {
+
+interface Props {
+  timeline: TimelinePoint[]
+}
+
+export default function PerformanceChart({ timeline }: Props) {
   return (
-    <>
-      <h2 className="text-xl font-semibold mb-6 text-gray-800">Performance Over Time</h2>
+    <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+      <h2 className="text-xl font-bold text-gray-900 mb-6">
+        Performance Over Time
+      </h2>
+
       <ResponsiveContainer width="100%" height={350}>
-        <LineChart data={data}>
-          <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-          <YAxis tick={{ fontSize: 12 }} />
+        <LineChart data={timeline}>
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 12, fill: '#6B7280' }}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 12, fill: '#6B7280' }}
+          />
           <Tooltip
             contentStyle={{
-              backgroundColor: '#f8f9fa',
-              border: '1px solid #e9ecef',
+              backgroundColor: '#F9FAFB',
+              border: '1px solid #E5E7EB',
               borderRadius: '8px',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
             }}
           />
+
           <Line
             type="monotone"
             dataKey="impressions"
-            stroke="#3b82f6"
+            stroke="#3B82F6"
             strokeWidth={3}
-            dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6 }}
+            dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
+            activeDot={{ r: 6, stroke: '#3B82F6', strokeWidth: 2, fill: '#FFFFFF' }}
           />
           <Line
             type="monotone"
             dataKey="clicks"
-            stroke="#10b981"
+            stroke="#10B981"
             strokeWidth={3}
-            dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6 }}
+            dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
+            activeDot={{ r: 6, stroke: '#10B981', strokeWidth: 2, fill: '#FFFFFF' }}
           />
         </LineChart>
       </ResponsiveContainer>
-    </>
-  );
+    </section>
+  )
 }

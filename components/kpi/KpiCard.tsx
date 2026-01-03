@@ -1,28 +1,47 @@
-interface Props {
-    title: string;
-    value: string | number;
+interface Kpis {
+    impressions: number
+    clicks: number
+    ctr: number
+    spend: number
 }
 
-export default function KpiCard({ title, value }: Props) {
-    const getColorClasses = (title: string) => {
-        switch (title.toLowerCase()) {
-            case 'impressions':
-                return 'bg-blue-50 border-blue-200 text-blue-800';
-            case 'clicks':
-                return 'bg-green-50 border-green-200 text-green-800';
-            case 'ctr':
-                return 'bg-yellow-50 border-yellow-200 text-yellow-800';
-            case 'spend':
-                return 'bg-red-50 border-red-200 text-red-800';
-            default:
-                return 'bg-gray-50 border-gray-200 text-gray-800';
-        }
-    };
+interface Props {
+    kpis: Kpis
+}
+
+export default function KpiCard({ kpis }: Props) {
+    const items = [
+        {
+            label: 'Impressions',
+            value: kpis.impressions.toLocaleString(),
+        },
+        {
+            label: 'Clicks',
+            value: kpis.clicks.toLocaleString(),
+        },
+        {
+            label: 'CTR',
+            value: `${kpis.ctr.toFixed(2)}%`,
+        },
+        {
+            label: 'Spend',
+            value: `$${kpis.spend.toFixed(2)}`,
+        },
+    ]
 
     return (
-        <div className={`p-6 rounded-xl border shadow-sm hover:shadow-md transition-shadow ${getColorClasses(title)}`}>
-            <p className="text-sm font-medium opacity-75">{title}</p>
-            <p className="text-3xl font-bold mt-2">{value}</p>
-        </div>
-    );
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {items.map((item) => (
+                <div
+                    key={item.label}
+                    className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                    <p className="text-sm font-medium text-gray-600 uppercase tracking-wide">{item.label}</p>
+                    <p className="text-3xl font-bold text-gray-900 mt-2">
+                        {item.value}
+                    </p>
+                </div>
+            ))}
+        </section>
+    )
 }
