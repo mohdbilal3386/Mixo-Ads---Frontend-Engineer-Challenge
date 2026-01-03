@@ -1,9 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Campaign Monitoring Dashboard
+
+A functional dashboard for monitoring campaign performance, built with Next.js and TypeScript. This application fetches campaign data from a backend API and displays key metrics, performance charts, and campaign details in an interactive interface.
+
+## Live Demo
+
+View the live application at: [https://mixo-ads-frontend-engineer-challeng.vercel.app/](https://mixo-ads-frontend-engineer-challeng.vercel.app/)
+
+## Features
+
+- **KPI Cards**: Display key performance indicators including impressions, clicks, CTR (Click-Through Rate), and spend
+- **Performance Chart**: Interactive line chart showing impressions and clicks over time using Recharts
+- **Campaign Filters**: Filter campaigns by specific campaign selection and search by campaign name
+- **Campaign Table**: Comprehensive table displaying campaign details including:
+  - Campaign name and status
+  - Budget and daily budget
+  - Start and end dates (mocked based on creation date)
+  - Supported platforms
+- **Responsive Design**: Mobile-friendly layout using Tailwind CSS
+
+## Tech Stack
+
+- **Framework**: Next.js 16 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **API**: Fetches data from https://mixo-fe-backend-task.vercel.app/
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd mixo-campaign-monitoring-dashboard
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
@@ -14,23 +63,43 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Main dashboard page
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── chart/            # Performance chart component
+│   ├── filters/          # Filter controls
+│   ├── kpi/              # KPI card component
+│   └── table/            # Campaign table component
+├── lib/                   # Utility functions and types
+│   ├── api.ts            # API functions
+│   ├── types.ts          # TypeScript interfaces
+│   └── format.ts         # Formatting utilities
+└── public/               # Static assets
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+The application integrates with a backend API at `https://mixo-fe-backend-task.vercel.app/` to fetch campaign data. The API provides campaign details, while KPIs and timeline data are mocked for demonstration purposes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application is deployed on Vercel and can be accessed at the live URL provided above. To deploy your own version:
 
-## Deploy on Vercel
+1. Push the code to a Git repository
+2. Connect the repository to Vercel
+3. Deploy automatically or manually trigger a deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
