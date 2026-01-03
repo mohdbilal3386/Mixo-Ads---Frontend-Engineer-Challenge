@@ -4,7 +4,7 @@ A functional dashboard for monitoring campaign performance, built with Next.js a
 
 ## Live Demo
 
-View the live application at: [https://mixo-ads-frontend-engineer-challeng.vercel.app/](https://mixo-ads-frontend-engineer-challeng.vercel.app/)
+View the live application at: [https://mixo-adsfrontend-engineer-challeng.netlify.app/](https://mixo-adsfrontend-engineer-challeng.netlify.app/)
 
 ## Features
 

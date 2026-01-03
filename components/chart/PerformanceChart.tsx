@@ -6,10 +6,10 @@ import {
   Line,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-
 
 interface Props {
   timeline: TimelinePoint[]
@@ -24,6 +24,9 @@ export default function PerformanceChart({ timeline }: Props) {
 
       <ResponsiveContainer width="100%" height={350}>
         <LineChart data={timeline}>
+          {/* Add grid */}
+          <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" />
+
           <XAxis
             dataKey="date"
             axisLine={false}
@@ -40,7 +43,7 @@ export default function PerformanceChart({ timeline }: Props) {
               backgroundColor: '#F9FAFB',
               border: '1px solid #E5E7EB',
               borderRadius: '8px',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
             }}
           />
 
@@ -50,7 +53,7 @@ export default function PerformanceChart({ timeline }: Props) {
             stroke="#3B82F6"
             strokeWidth={3}
             dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6, stroke: '#3B82F6', strokeWidth: 2, fill: '#FFFFFF' }}
+            activeDot={{ r: 6, stroke: '#3B82F6', strokeWidth: 2, fill: '#000' }}
           />
           <Line
             type="monotone"
@@ -58,7 +61,7 @@ export default function PerformanceChart({ timeline }: Props) {
             stroke="#10B981"
             strokeWidth={3}
             dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6, stroke: '#10B981', strokeWidth: 2, fill: '#FFFFFF' }}
+            activeDot={{ r: 6, stroke: '#10B981', strokeWidth: 2, fill: '#000' }}
           />
         </LineChart>
       </ResponsiveContainer>
